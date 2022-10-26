@@ -3,38 +3,11 @@ info:
   title: Product API
   description: Pactflow Product API demo
   version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/aruljothi_parthiban/Sample-Product-Api/1.0.0
+  description: SwaggerHub API Auto Mocking
 paths:
   /products:
-    post:
-      summary: Create a product
-      description: Creates a new product
-      operationId: createProduct
-      requestBody:
-        description: Create a new Product
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Product'
-            examples:
-              application/json:
-                value:
-                  id: "1234"
-                  type: "food"
-                  price: 42
-      responses:
-        "200":
-          description: successful operation
-          content:
-            "application/json; charset=utf-8":
-              schema:
-                  $ref: '#/components/schemas/Product'
-              examples:
-                application/json:
-                  value:
-                    id: "1234"
-                    type: "food"
-                    price: 42
     get:
       summary: List all products
       description: Returns all products
@@ -43,23 +16,53 @@ paths:
         "200":
           description: successful operation
           content:
-            "application/json; charset=utf-8":
+            application/json; charset=utf-8:
               schema:
-                type: "array"
+                type: array
                 items:
                   $ref: '#/components/schemas/Product'
               examples:
                 application/json:
                   value:
-                    - id: "1234"
-                      type: "food"
-                      price: 42
-                      # name: "pizza"
-                      # version: "1.0.0"
-                      # see https://github.com/apiaryio/dredd/issues/1430 for why
+                  - id: "1234"
+                    type: food
+                    price: 42
+                    description: Indian cuisine
         "400":
           description: Invalid ID supplied
           content: {}
+    post:
+      summary: Create a product
+      description: Creates a new product
+      operationId: createProduct
+      requestBody:
+        description: Create a new Product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+            examples:
+              application/json:
+                value:
+                  id: "1234"
+                  type: food
+                  price: 42
+                  description: Indian cuisine
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Product'
+              examples:
+                application/json:
+                  value:
+                    id: "1234"
+                    type: food
+                    price: 42
+                    description: Indian cuisine
   /product/{id}:
     get:
       summary: Find product by ID
@@ -69,26 +72,26 @@ paths:
       - name: id
         in: path
         description: ID of product to get
+        required: true
+        style: simple
+        explode: false
         schema:
           type: string
-        required: true
         example: 10
       responses:
         "200":
           description: successful operation
           content:
-            "application/json; charset=utf-8":
+            application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Product'
               examples:
                 application/json:
                   value:
                     id: "1234"
-                    type: "food"
+                    type: food
                     price: 42
-                    # name: "pizza"
-                    # version: "1.0.0"
-                    # see https://github.com/apiaryio/dredd/issues/1430 for why
+                    description: Indian cuisine
         "400":
           description: Invalid ID supplied
           content: {}
@@ -98,11 +101,11 @@ paths:
 components:
   schemas:
     Product:
-      type: object
       required:
-        - id
-        - name
-        - price
+      - id
+      - name
+      - price
+      type: object
       properties:
         id:
           type: string
@@ -114,3 +117,5 @@ components:
           type: string
         price:
           type: number
+        description:
+          type: string
