@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Product API
   description: Pactflow Product API demo
-  version: 1.0.0
+  version: 1.0.1
 servers:
 - url: https://virtserver.swaggerhub.com/aruljothi_parthiban/Sample-Product-Api/1.0.0
   description: SwaggerHub API Auto Mocking
@@ -28,6 +28,7 @@ paths:
                     type: food
                     price: 42
                     description: Indian cuisine
+                    sku: Test
         "400":
           description: Invalid ID supplied
           content: {}
@@ -48,6 +49,7 @@ paths:
                   type: food
                   price: 42
                   description: Indian cuisine
+                  sku: Test
         required: true
       responses:
         "200":
@@ -63,6 +65,7 @@ paths:
                     type: food
                     price: 42
                     description: Indian cuisine
+                    sku: Test
   /product/{id}:
     get:
       summary: Find product by ID
@@ -92,6 +95,7 @@ paths:
                     type: food
                     price: 42
                     description: Indian cuisine
+                    sku: Test
         "400":
           description: Invalid ID supplied
           content: {}
@@ -118,4 +122,6 @@ components:
         price:
           type: number
         description:
+          type: string
+        sku:
           type: string

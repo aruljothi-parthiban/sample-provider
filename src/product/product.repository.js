@@ -4,9 +4,9 @@ class ProductRepository {
 
     constructor() {
         this.products = new Map([
-            ["09", new Product("09", "CREDIT_CARD", "Gem Visa", "v1", 99.99, "Indian cuisine")],
-            ["10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1", 49.49, "Indian cuisine")],
-            ["11", new Product("11", "PERSONAL_LOAN", "MyFlexiPay", "v2", 16.50, "Indian cuisine")],
+            ["09", new Product("09", "CREDIT_CARD", "Gem Visa", "v1", 99.99, "Indian cuisine", "test1")],
+            ["10", new Product("10", "CREDIT_CARD", "28 Degrees", "v1", 49.49, "Indian cuisine", "test2")],
+            ["11", new Product("11", "PERSONAL_LOAN", "MyFlexiPay", "v2", 16.50, "Indian cuisine", "test3")],
         ]);
     }
 
