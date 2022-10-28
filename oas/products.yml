@@ -102,6 +102,87 @@ paths:
         "404":
           description: Product not found
           content: {}
+  /suggest:
+    get:
+      summary: Suggest
+      description: Returns a suggestions
+      operationId: getSuggestions
+      parameters:
+      - name: request_type
+        in: query
+        description: Request Type
+        required: true
+        explode: false
+        schema:
+          type: string
+        example: suggest
+      - name: account_id
+        in: query
+        description: Account ID
+        required: true
+        explode: false
+        schema:
+          type: number
+        example: 6466
+      - name: catalog_views
+        in: query
+        description: Catalog Views
+        required: true
+        explode: false
+        schema:
+          type: string
+        example: catalog_views
+      - name: q
+        in: query
+        description: Search Text
+        required: true
+        explode: false
+        schema:
+          type: string
+        example: specialty hand tools
+      - name: ref_url
+        in: query
+        description: Reference Url
+        required: true
+        explode: false
+        schema:
+          type: string
+        example: https://sit3-www.canadiantire.ca/
+      - name: request_id
+        in: query
+        description: Request ID
+        required: true
+        explode: false
+        schema:
+          type: string
+        example: e42c75bad3fe4b14bf1ba74fd3403ac2
+      - name: _br_uid_2
+        in: query
+        description: UID
+        required: true
+        explode: false
+        schema:
+          type: string
+        example: uid=5678975391619:v=12.0:ts=1654004108717:hc=39&
+      
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/SuggestionResult'
+              examples:
+                application/json:
+                  value:
+                    queryContext:
+                      originalQuery: "specialty hand tools"
+        "400":
+          description: Invalid ID supplied
+          content: {}
+        "404":
+          description: Product not found
+          content: {}
 components:
   schemas:
     Product:
@@ -125,3 +206,14 @@ components:
           type: string
         sku:
           type: string
+    QueryContext:
+      type: object
+      properties:
+        originalQuery:
+          type: string
+    SuggestionResult:
+      type: object
+      properties:
+        queryContext:
+          type: object
+      
