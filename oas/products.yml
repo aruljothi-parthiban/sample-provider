@@ -46,6 +46,7 @@ paths:
               application/json:
                 value:
                   id: "1234"
+                  name: "idli"
                   type: food
                   price: 42
                   description: Indian cuisine
@@ -175,8 +176,7 @@ paths:
               examples:
                 application/json:
                   value:
-                    queryContext:
-                      originalQuery: "specialty hand tools"
+                    queryContext: "specialty hand tools"
         "400":
           description: Invalid ID supplied
           content: {}
@@ -206,14 +206,11 @@ components:
           type: string
         sku:
           type: string
-    QueryContext:
-      type: object
-      properties:
-        originalQuery:
-          type: string
     SuggestionResult:
+      required:
+      - queryContext
       type: object
       properties:
         queryContext:
-          type: object
+          type: string
       
