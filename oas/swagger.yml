@@ -4,6 +4,8 @@ info:
   description: Pactflow Product API demo
   version: 1.0.1
 servers:
+- url: https://virtserver.swaggerhub.com/CantireCorp/sample-provider/1.0.1
+  description: SwaggerHub API Auto Mocking
 - url: https://virtserver.swaggerhub.com/aruljothi_parthiban/Sample-Product-Api/1.0.0
   description: SwaggerHub API Auto Mocking
 paths:
@@ -25,8 +27,8 @@ paths:
                 application/json:
                   value:
                   - id: "1234"
-                    type: food
-                    price: 42
+                    type: foods
+                    price: 45
                     description: Indian cuisine
                     sku: Test
         "400":
