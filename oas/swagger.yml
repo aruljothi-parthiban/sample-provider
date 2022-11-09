@@ -4,8 +4,6 @@ info:
   description: Pactflow Product API demo
   version: 1.0.1
 servers:
-- url: https://virtserver.swaggerhub.com/CantireCorp/sample-provider/1.0.1
-  description: SwaggerHub API Auto Mocking
 - url: https://virtserver.swaggerhub.com/aruljothi_parthiban/Sample-Product-Api/1.0.0
   description: SwaggerHub API Auto Mocking
 paths:
@@ -27,8 +25,8 @@ paths:
                 application/json:
                   value:
                   - id: "1234"
-                    type: foods
-                    price: 45
+                    type: food
+                    price: 42
                     description: Indian cuisine
                     sku: Test
         "400":
@@ -48,7 +46,7 @@ paths:
               application/json:
                 value:
                   id: "1234"
-                  name: idli
+                  name: "idli"
                   type: food
                   price: 42
                   description: Indian cuisine
@@ -115,7 +113,6 @@ paths:
         in: query
         description: Request Type
         required: true
-        style: form
         explode: false
         schema:
           type: string
@@ -124,7 +121,6 @@ paths:
         in: query
         description: Account ID
         required: true
-        style: form
         explode: false
         schema:
           type: number
@@ -133,7 +129,6 @@ paths:
         in: query
         description: Catalog Views
         required: true
-        style: form
         explode: false
         schema:
           type: string
@@ -142,7 +137,6 @@ paths:
         in: query
         description: Search Text
         required: true
-        style: form
         explode: false
         schema:
           type: string
@@ -151,7 +145,6 @@ paths:
         in: query
         description: Reference Url
         required: true
-        style: form
         explode: false
         schema:
           type: string
@@ -160,7 +153,6 @@ paths:
         in: query
         description: Request ID
         required: true
-        style: form
         explode: false
         schema:
           type: string
@@ -169,11 +161,11 @@ paths:
         in: query
         description: UID
         required: true
-        style: form
         explode: false
         schema:
           type: string
         example: uid=5678975391619:v=12.0:ts=1654004108717:hc=39&
+      
       responses:
         "200":
           description: successful operation
@@ -184,7 +176,7 @@ paths:
               examples:
                 application/json:
                   value:
-                    queryContext: specialty hand tools
+                    queryContext: "specialty hand tools"
         "400":
           description: Invalid ID supplied
           content: {}
@@ -221,3 +213,4 @@ components:
       properties:
         queryContext:
           type: string
+      
